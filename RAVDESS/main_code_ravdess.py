@@ -12,13 +12,13 @@ from sklearn.ensemble import BaggingClassifier,RandomForestClassifier
 np.random.seed(42)  # for reproducibililty
 
 # Get data and label from saved file
-f = open('C:/Users/ANJALI/Downloads/datasets/emodb.pkl', 'rb')
+f = open('/datasets/ravdess.pkl', 'rb')
 data,label=cPickle.load(f)
 
 # Min-max scaling
 scal=MinMaxScaler()
 data=scal.fit_transform(data,label)
-x_train,x_test,y_train,y_test=train_test_split(data,label, test_size=53, train_size=482, random_state=42)
+x_train,x_test,y_train,y_test=train_test_split(data,label, test_size=144, train_size=1296, random_state=42)
 
 # Boruta feature selection
 rf = RandomForestClassifier(random_state = 42)
