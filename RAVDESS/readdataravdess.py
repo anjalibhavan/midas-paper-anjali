@@ -19,9 +19,7 @@ def featurex(filepath):
     delt=delta(ceps,2)
     sscz=ssc(X,rate,nfft=2048)
     filt=delta(delt,2)
-    #zeroo=delta(sscz,2)
-    #librosa.feature.zero_crossing_rate(X,rate)
-#    zeroo=zeroo.reshape((zeroo.shape[1],zeroo.shape[0]))
+ 
     ls = []
     for i in range(ceps.shape[1]):
         temp = ceps[:,i]
@@ -60,7 +58,7 @@ def featurex(filepath):
 
 
 def read_emodb(img_cols=(mfc+sscc+dell+filtt)*numfeatper):
-    rootdir = "C:/Users/ANJALI/Downloads/emodbdata/Audio_Speech_Actors_01-24/"
+    rootdir = "/datasets/Audio_Speech_Actors_01-24/"
     num = 1440
     solns=['1','2','3','4','5','6','7','8']
     data = np.empty(shape=(num, img_cols))
@@ -73,7 +71,7 @@ def read_emodb(img_cols=(mfc+sscc+dell+filtt)*numfeatper):
         data[i] = featurex(full_name)
         label[i] = solns.index(filename[7])
         i = i+1
-    f = open('C:/Users/ANJALI/Downloads/emodbdata/ravdess.pkl', 'wb')
+    f = open('/datasets/ravdess.pkl', 'wb')
     cPickle.dump((data, label), f)
     f.close()
     print(data.shape)
