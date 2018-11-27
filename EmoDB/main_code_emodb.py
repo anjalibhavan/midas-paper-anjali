@@ -12,7 +12,7 @@ from sklearn.ensemble import BaggingClassifier,RandomForestClassifier
 np.random.seed(42)  # for reproducibililty
 
 # Get data and label from saved file
-f = open('C:/Users/ANJALI/Downloads/datasets/emodb.pkl', 'rb')
+f = open('/datasets/emodb.pkl', 'rb')
 data,label=cPickle.load(f)
 
 # Min-max scaling
